@@ -23,13 +23,13 @@ docker cp nginx-mtls:/etc/nginx/ssl/client.key .
 docker cp nginx-mtls:/etc/nginx/ssl/ca.pem .
 ```
 
-To test the mTLS setup, you can use curl:
+To test the mTLS setup, you can use `openssl`:
 
 ```bash
-curl --cacert ca.pem \
-     --cert client.crt \
-     --key client.key \
-     https://localhost
+openssl s_client -connect localhost:443 -tls1_3 \
+    -cert client.crt \
+    -key client.key \
+    -CAfile ca.pem
 ```
 
 Key features of this mTLS setup:
