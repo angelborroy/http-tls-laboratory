@@ -32,6 +32,14 @@ openssl s_client -connect localhost:443 -tls1_3 \
     -CAfile ca.pem
 ```
 
+To test the mTLS setup from a browser, install locally the P#12 containing the certificate in your local OS. The password of the P#12 keystore is `password`.
+
+```bash
+docker cp nginx-mtls:/etc/nginx/ssl/client.p12 .
+```
+
+When accessing https://localhost, the browser will detect the local certificate and it will prompt you to use it.
+
 Key features of this mTLS setup:
 
 1. Creates a complete PKI infrastructure:

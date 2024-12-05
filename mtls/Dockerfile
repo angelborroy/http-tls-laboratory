@@ -20,7 +20,7 @@ COPY ssl/openssl.cnf /tmp/
 RUN chmod +x /tmp/generate-certs.sh && \
     cd /tmp && \
     ./generate-certs.sh && \
-    mv *.crt *.key ca.pem /etc/nginx/ssl/
+    mv *.crt *.key *.p12 ca.pem /etc/nginx/ssl/
 
 # Expose HTTPS port
 EXPOSE 443
